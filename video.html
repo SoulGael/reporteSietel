@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+<body>
+    <video autoplay id="tVideo"></video>
+ 
+<script>
+    function getMedia () {
+        // Obtenemos el getUserMedia segun el navegador
+        navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+        // Solicitamos acceso
+        navigator.getUserMedia ( {
+            video: true, 
+            audio: true
+        }, function( oMedia ) {
+            // Conectamos la webcam con el <video>
+            var video = document.getElementById('tVideo');
+            video.src = window.URL.createObjectURL( oMedia );
+        } );
+    }
+    getMedia ();
+</script>
+</body>
+</html>
